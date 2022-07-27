@@ -11,7 +11,7 @@ resource "aws_instance" "dev" {
   tags = {
     "Name" = "dev${count.index}"
   }
-  vpc_security_group_ids = ["sg-0dc29a92c8c1eb32d"]
+  vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
 }
 
 resource "aws_security_group" "allow_ssh" {
