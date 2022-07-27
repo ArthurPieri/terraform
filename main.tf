@@ -11,6 +11,26 @@ resource "aws_instance" "dev" {
   tags = {
     "Name" = "dev${count.index}"
   }
+  vpc_security_group_ids = ["sg-0dc29a92c8c1eb32d"]
 }
 
+resource "aws_security_group" "allow_ssh" {
+  name        = "allow_ssh"
+  description = "Allow SSH access"
 
+  ingress = [{
+    cidr_blocks      = ["0.0.0.0/0"]
+    description      = "allow ssh"
+    from_port        = 22
+    prefix_list_ids  = []
+    ipv6_cidr_blocks = ["::/0"]
+    protocol         = "tcp"
+    to_port          = 22
+    self             = true
+    security_groups  = ["sg-07be4fdef15342fad"]
+  }]
+
+  tags = {
+    "Name" = "allow-ssh"
+  }
+}

@@ -6,3 +6,6 @@ terraform plan
 
 ## Para provisionar a infra
 terraform apply
+
+## Mostrar como esta o ambiente
+terraform show
