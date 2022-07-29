@@ -18,7 +18,7 @@ resource "aws_instance" "dev4" {
   }
   vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
   depends_on = [
-    aws_s3_bucket.dev4
+    aws_s3_bucket_acl.dev4
   ]
 }
 
