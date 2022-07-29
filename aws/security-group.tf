@@ -3,7 +3,7 @@ resource "aws_security_group" "allow_ssh" {
   description = "Allow SSH access"
 
   ingress = [{
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = var.cdirs_acesso_remoto
     description      = "allow ssh"
     from_port        = 22
     prefix_list_ids  = []
@@ -25,7 +25,7 @@ resource "aws_security_group" "allow_ssh_us_east_2" {
   description = "Allow SSH access"
 
   ingress = [{
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = var.cdirs_acesso_remoto
     description      = "allow ssh"
     from_port        = 22
     prefix_list_ids  = []
@@ -33,7 +33,7 @@ resource "aws_security_group" "allow_ssh_us_east_2" {
     protocol         = "tcp"
     to_port          = 22
     self             = true
-    security_groups  = ["sg-07be4fdef15342fad"]
+    security_groups  = []
   }]
 
   tags = {
